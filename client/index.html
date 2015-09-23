@@ -14,23 +14,24 @@
 	<script type="text/javascript" src="javascripts/friendsController.js"></script>
 	
 </head>
-<body ng-controller="FriendsController">
-	<p ng-repeat="error in errors">{{error}}</p>
+<!-- friendscontroller as f1 -->
+<body ng-controller="FriendsController as f1">
+	<p ng-repeat="error in f1.errors">{{error}}</p>
 
 	<h1>Friends</h1>
 	<input type="text" ng-model="filter_name" placeholder="filter">
 	{{filter_name}}
 	<ul>
 		<!-- display friends -->
-		<li ng-repeat="friend in friends | filter: filter_name">
+		<li ng-repeat="friend in f1.friends | filter: filter_name">
 			{{friend.name}}, {{friend.age}}
 		</li>
 	</ul>
 	<h1>Add a Friend</h1>
 
-	<input type="text" ng-model="new_friend.name" placeholder="name">
-	<input type="text" ng-model="new_friend.age" placeholder="age">
-	<input type="submit" ng-click="addfriend()">
-	
+	<input type="text" ng-model="f1.new_friend.name" placeholder="name">
+	<input type="text" ng-model="f1.new_friend.age" placeholder="age">
+	<input type="submit" ng-click="f1.addfriend()">
+	</div>
 </body>
 </html>

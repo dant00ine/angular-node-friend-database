@@ -15,21 +15,31 @@ module.exports = (function(){
 		},
 
 		add: function(req, res){
-			console.log('server controller add function reached');
-			console.log(req.body);
-
+			
 			newfriend = new Friend(req.body);
 			newfriend.save(function(err, results){
 				console.log('results')
 				console.log(results);
+				// console.log(err);
 				if(err){
+					console.log('error triggered')
 					error_messages =[];
-					error_messages.push(err.errors.age.properties.message);
-					error_messages.push(err.errors.name.properties.message);
+
+					if(err.errors.age.properties.message){
+						console.log('age')
+						error_messages.push(err.errors.age.properties.message);
+					}
+
+					if(err.errors.name.properties.message){
+						console.log('name')
+						error_messages.push(err.errors.name.properties.message);
+					}
+					
 					console.log("multiple messages?", error_messages);
 					res.json({success: false, message: error_messages});
 					// res.redirect('/');
 				} else {
+					console.log('no error')
 					res.json({success: true, message: results});
 				}
 			})

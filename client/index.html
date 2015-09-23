@@ -10,11 +10,13 @@
 	<script type="text/javascript">
 		var friends_app = angular.module('friends_app', []);
 	</script>
-	<script type="text/javascript" src="friendsFactory.js"></script>
-	<script type="text/javascript" src="friendsController.js"></script>
+	<script type="text/javascript" src="javascripts/friendsFactory.js"></script>
+	<script type="text/javascript" src="javascripts/friendsController.js"></script>
 	
 </head>
 <body ng-controller="FriendsController">
+	<p ng-repeat="error in errors">{{error}}</p>
+
 	<h1>Friends</h1>
 	<input type="text" ng-model="filter_name" placeholder="filter">
 	{{filter_name}}
